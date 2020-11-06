@@ -2,24 +2,26 @@ package LinkedList;
 
 public class Queue {
     static int counter = 1;
-    Object obj;
-    Queue next;
-
-    public Queue(Object obj) {
-        this.obj = obj;
-        this.next = null;
-    }
+    Object obj = null;
+    Queue next = null;
 
     public void push(Object obj) {
-        if (this.obj == null || this.obj.getClass() == obj.getClass()) {
-            Queue iter = this;
+
+        if(this.obj == null){
+            this.obj = obj;
+            this.next = null;
+            counter++;
+        }
+        else if (obj != null && this.obj.getClass() == obj.getClass()) {
+             Queue iter = this;
             while (iter.next != null) {
                 iter = iter.next;
             }
-            iter.next = new Queue(obj);
+            iter.next = new Queue();
+            iter.next.push(obj);
             counter++;
-        } else {
-            System.out.println("Object type is invalid.");
+        } else{
+            System.out.println("Invalid object type.");
         }
     }
 

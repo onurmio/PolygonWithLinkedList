@@ -11,7 +11,7 @@ public class Main {
     }
 
     public static void testQueue(){
-        Queue queue = new Queue(new Point(3,5));
+        Queue queue = new Queue();
         for (int i = 0; i < 20; i++) {
             queue.push(new Point(i , i + 2));
         }
@@ -25,7 +25,7 @@ public class Main {
     }
 
     public static void testStack(){
-        Stack stack = new Stack(new Point(3,5));
+        Stack stack = new Stack();
         for (int i = 0; i < 20; i++) {
             stack.push(new Point(i, i + 2));
         }

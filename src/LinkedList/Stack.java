@@ -1,23 +1,30 @@
 package LinkedList;
 
 public class Stack {
-    static int counter = 1;
-    Object obj;
-    Stack next;
+    static int counter = 0;
+    Object obj = null;
+    Stack next = null;
 
-    public Stack(Object obj) {
-        this.obj = obj;
-        this.next = null;
+    public Object getObject() {
+        return obj;
     }
 
     public void push(Object obj) {
-        if (this.obj == null || this.obj.getClass() == obj.getClass()) {
+        if(this.obj == null){
+            this.obj = obj;
+            this.next = null;
+            counter++;
+        }
+        else if (obj != null && this.obj.getClass() == obj.getClass()) {
             Stack iter = this;
             while (iter.next != null) {
                 iter = iter.next;
             }
-            iter.next = new Stack(obj);
+            iter.next = new Stack();
+            iter.next.push(obj);
             counter++;
+        } else{
+            System.out.println("Invalid object type.");
         }
     }
 
@@ -36,23 +43,23 @@ public class Stack {
         }
     }
 
-    public String top() {
+    public Stack top() {
         try {
             Stack iter = this;
             while (iter.next != null) {
                 iter = iter.next;
             }
-            return iter.obj.toString();
+            return iter;
         } catch (NullPointerException e) {
-            return "Stack is empty.";
+            return null;
         }
     }
 
-    public String bottom() {
+    public Stack bottom() {
         try {
-            return this.obj.toString();
+            return this;
         } catch (NullPointerException e) {
-            return "Stack is empty.";
+            return null;
         }
     }
 

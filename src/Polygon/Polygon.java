@@ -38,10 +38,8 @@ class LinkedListStack {
     }*/
 
     public void push(Point value) {
-
         this.last().next = new Node();
         this.last().value = value;
-
     }
 
     public static void main(String[] args) {
@@ -50,8 +48,6 @@ class LinkedListStack {
         for (int i = 0; i < 5; i++) {
             lls.push(new Point(i, i * 6));
         }
-
-
         lls.print();
     }
 
@@ -70,11 +66,8 @@ class LinkedListStack {
         while (iter.next != null) {
 
             iter = iter.next;
-
-
         }
         return iter;
-
     }
 
     public Node first(){
