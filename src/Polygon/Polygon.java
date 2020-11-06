@@ -6,8 +6,8 @@ class Node {
 }
 
 class LinkedListStack {
-     Node head;
-     int counter=0;
+    Node head;
+    int counter = 0;
 
     public LinkedListStack(Point point) {
         head = new Node();
@@ -25,14 +25,10 @@ class LinkedListStack {
         return value;
     }
 
-    /*public Point popLast() {
-        if (head == null) {
-            return null;
-        }
-        Point value = this.last().value;
-        this.last() = null;
-        return value;
-    }*/
+    /*
+     * public Point popLast() { if (head == null) { return null; } Point value =
+     * this.last().value; this.last() = null; return value; }
+     */
 
     public void push(Point value) {
         this.last().next = new Node();
@@ -41,7 +37,7 @@ class LinkedListStack {
 
     public static void main(String[] args) {
 
-        LinkedListStack lls = new LinkedListStack(new Point(3,5));
+        LinkedListStack lls = new LinkedListStack(new Point(3, 5));
         for (int i = 0; i < 5; i++) {
             lls.push(new Point(i, i * 6));
         }
@@ -67,12 +63,9 @@ class LinkedListStack {
         return iter;
     }
 
-    public Node first(){
+    public Node first() {
 
         return this.head;
 
     }
 }
-
-
-

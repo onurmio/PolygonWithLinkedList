@@ -14,12 +14,11 @@ public class Stack {
     }
 
     public void push(Object obj) {
-        if(this.obj == null){
+        if (this.obj == null) {
             this.obj = obj;
             this.next = null;
             counter++;
-        }
-        else if (obj != null && this.obj.getClass() == obj.getClass()) {
+        } else if (obj != null && this.obj.getClass() == obj.getClass()) {
             Stack iter = this;
             while (iter.next != null) {
                 iter = iter.next;
@@ -27,7 +26,7 @@ public class Stack {
             iter.next = new Stack();
             iter.next.push(obj);
             counter++;
-        } else{
+        } else {
             System.out.println("Invalid object type.");
         }
     }
@@ -67,12 +66,12 @@ public class Stack {
         }
     }
 
-    public void reverse(){
+    public void reverse() {
         Stack iter = this;
         Stack reversed = new Stack();
-        while(true){
+        while (true) {
             reversed.push(iter.top().getObj());
-            if(iter.next == null)
+            if (iter.next == null)
                 break;
             iter.pop();
         }
@@ -80,9 +79,9 @@ public class Stack {
         this.next = reversed.next;
     }
 
-    public void print(){
+    public void print() {
         Stack iter = this;
-        while(iter != null){
+        while (iter != null) {
             System.out.println(iter.getObj());
             iter = iter.next;
         }
