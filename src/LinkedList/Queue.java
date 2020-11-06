@@ -5,6 +5,14 @@ public class Queue {
     Object obj = null;
     Queue next = null;
 
+    public Object getObj() {
+        return obj;
+    }
+    
+    public static int getCounter() {
+        return counter;
+    }
+
     public void push(Object obj) {
 
         if(this.obj == null){
@@ -35,27 +43,31 @@ public class Queue {
         }
     }
 
-    public String last() {
+    public Queue last() {
         try {
             Queue iter = this;
             while (iter.next != null) {
                 iter = iter.next;
             }
-            return iter.obj.toString();
+            return iter;
         } catch (NullPointerException e) {
-            return "Stack is empty.";
+            return null;
         }
     }
 
-    public String first() {
+    public Queue first() {
         try {
-            return this.obj.toString();
+            return this;
         } catch (NullPointerException e) {
-            return "Stack is empty.";
+            return null;
         }
     }
 
-    public static int getCounter() {
-        return counter;
+    public void print(){
+        Queue iter = this;
+        while(iter != null){
+            System.out.println(iter.getObj());
+            iter = iter.next;
+        }
     }
 }

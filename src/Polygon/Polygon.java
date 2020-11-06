@@ -1,8 +1,5 @@
 package Polygon;
 
-import LinkedList.Queue;
-import LinkedList.Stack;
-
 class Node {
     Point value;
     Node next = null;

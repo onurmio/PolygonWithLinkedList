@@ -6,8 +6,13 @@ import Polygon.Point;
 
 public class Main {
     public static void main(String[] args) {
-        testStack();
-        testQueue();
+        testPoint();
+    }
+
+    public static void testPoint() {
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(5, 12);
+        System.out.println(p1.distanceTo(p2));
     }
 
     public static void testQueue(){
@@ -16,12 +21,12 @@ public class Main {
             queue.push(new Point(i , i + 2));
         }
 
-        for (int i = 0; i < 22; i++) {
+        for (int i = 0; i < 0; i++) {
             queue.pop();
         }
-
-        System.out.println(queue.last());
-        System.out.println(queue.first());
+        
+        queue.print();
+        System.out.println();
     }
 
     public static void testStack(){
@@ -30,11 +35,12 @@ public class Main {
             stack.push(new Point(i, i + 2));
         }
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 0; i++) {
             stack.pop();
         }
-
-        System.out.println(stack.top());
-        System.out.println(stack.bottom());
+        stack.print();
+        System.out.println();
+        stack.reverse();
+        stack.print();
     }
 }

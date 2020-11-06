@@ -5,8 +5,12 @@ public class Stack {
     Object obj = null;
     Stack next = null;
 
-    public Object getObject() {
+    public Object getObj() {
         return obj;
+    }
+
+    public static int getCounter() {
+        return counter;
     }
 
     public void push(Object obj) {
@@ -63,7 +67,24 @@ public class Stack {
         }
     }
 
-    public static int getCounter() {
-        return counter;
+    public void reverse(){
+        Stack iter = this;
+        Stack reversed = new Stack();
+        while(true){
+            reversed.push(iter.top().getObj());
+            if(iter.next == null)
+                break;
+            iter.pop();
+        }
+        this.obj = reversed.obj;
+        this.next = reversed.next;
+    }
+
+    public void print(){
+        Stack iter = this;
+        while(iter != null){
+            System.out.println(iter.getObj());
+            iter = iter.next;
+        }
     }
 }
