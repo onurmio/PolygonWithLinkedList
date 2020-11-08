@@ -1,24 +1,36 @@
 package LinkedList;
 
 public class Queue {
-    static int counter = 1;
     Object obj = null;
     Queue next = null;
+
+    public Queue() {
+    }
+
+    public Queue(Object[] objects) {
+        for (int i = 0; i < objects.length; i++) {
+            this.push(objects[i]);
+        }
+    }
 
     public Object getObj() {
         return obj;
     }
 
-    public static int getCounter() {
+    public int count() {
+        int counter = 0;
+        Queue iter = this;
+        while (iter != null) {
+            counter++;
+            iter = iter.next;
+        }
         return counter;
     }
 
     public void push(Object obj) {
-
         if (this.obj == null) {
             this.obj = obj;
             this.next = null;
-            counter++;
         } else if (obj != null && this.obj.getClass() == obj.getClass()) {
             Queue iter = this;
             while (iter.next != null) {
@@ -26,7 +38,6 @@ public class Queue {
             }
             iter.next = new Queue();
             iter.next.push(obj);
-            counter++;
         } else {
             System.out.println("Invalid object type.");
         }
@@ -36,7 +47,6 @@ public class Queue {
         if (this.next != null) {
             this.obj = this.next.obj;
             this.next = this.next.next;
-            counter--;
         } else {
             this.obj = null;
         }
@@ -60,6 +70,16 @@ public class Queue {
         } catch (NullPointerException e) {
             return null;
         }
+    }
+
+    public Object[] queueToArray() {
+        Object[] objects = new Object[this.count()];
+        Queue iter = this;
+        for (int i = 0; i < objects.length; i++) {
+            objects[i] = iter.getObj();
+            iter = iter.next;
+        }
+        return objects;
     }
 
     public void print() {

@@ -3,10 +3,21 @@ package Main;
 import LinkedList.Queue;
 import LinkedList.Stack;
 import Polygon.Point;
+import Polygon.Polygon;
 
 public class Main {
     public static void main(String[] args) {
-        testPoint();
+        testPolygon();
+    }
+
+    public static void testPolygon() {
+        Stack stack = new Stack();
+        stack.push(new Point(0, 0));
+        stack.push(new Point(5, 12));
+        stack.push(new Point(8, 16));
+        Polygon polygon = new Polygon(stack);
+        polygon.close();
+        System.out.println(polygon.area());
     }
 
     public static void testPoint() {
@@ -27,6 +38,13 @@ public class Main {
 
         queue.print();
         System.out.println();
+        Object[] objs = queue.queueToArray();
+        for (int i = 0; i < objs.length; i++) {
+            System.out.println(objs[i]);
+        }
+        System.out.println("objeden");
+        Stack stak = new Stack(objs);
+        stak.print();
     }
 
     public static void testStack() {
@@ -42,5 +60,14 @@ public class Main {
         System.out.println();
         stack.reverse();
         stack.print();
+        System.out.println(stack.count());
+
+        Object[] objs = stack.stackToArray();
+        for (int i = 0; i < objs.length; i++) {
+            System.out.println(objs[i]);
+        }
+        System.out.println("objeden");
+        Stack stack2 = new Stack(objs);
+        stack2.reverse().print();
     }
 }

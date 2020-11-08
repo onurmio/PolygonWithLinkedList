@@ -1,15 +1,28 @@
 package LinkedList;
 
 public class Stack {
-    static int counter = 0;
     Object obj = null;
     Stack next = null;
+
+    public Stack(){}
+
+    public Stack(Object[] objects){
+        for (int i = 0; i < objects.length; i++) {
+            this.push(objects[i]);
+        }
+    }
 
     public Object getObj() {
         return obj;
     }
 
-    public static int getCounter() {
+    public int count() {
+        int counter = 0;
+        Stack iter = this;
+        while (iter != null) {
+            counter++;
+            iter = iter.next;
+        }
         return counter;
     }
 
@@ -17,7 +30,6 @@ public class Stack {
         if (this.obj == null) {
             this.obj = obj;
             this.next = null;
-            counter++;
         } else if (obj != null && this.obj.getClass() == obj.getClass()) {
             Stack iter = this;
             while (iter.next != null) {
@@ -25,7 +37,6 @@ public class Stack {
             }
             iter.next = new Stack();
             iter.next.push(obj);
-            counter++;
         } else {
             System.out.println("Invalid object type.");
         }
@@ -39,7 +50,6 @@ public class Stack {
                     iter = iter.next;
                 }
                 iter.next = null;
-                counter--;
             } else {
                 iter.obj = null;
             }
@@ -66,7 +76,7 @@ public class Stack {
         }
     }
 
-    public void reverse() {
+    public Stack reverse() {
         Stack iter = this;
         Stack reversed = new Stack();
         while (true) {
@@ -77,6 +87,17 @@ public class Stack {
         }
         this.obj = reversed.obj;
         this.next = reversed.next;
+        return this;
+    }
+
+    public Object[] stackToArray(){
+        Object[] objects = new Object[this.count()];
+        Stack iter = this;
+        for (int i = 0; i < objects.length; i++) {
+            objects[i] = iter.getObj();
+            iter = iter.next;
+        }
+        return objects;
     }
 
     public void print() {
