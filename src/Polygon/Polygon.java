@@ -122,13 +122,20 @@ public class Polygon {
     }
 
     public Point popLast() {
-        Node temp = head;
-        while (temp.next.next != null) {
-            temp = temp.next;
+
+        if (head == null || head.next == null) {
+            head = null;
+            return null;
+        } else {
+            Node temp = head;
+            while (temp.next.next != null) {
+                temp = temp.next;
+            }
+            Point value = temp.next.value;
+            temp.next = null;
+            return value;
         }
-        Point value = temp.next.value;
-        temp.next = null;
-        return value;
+
     }
 
     public void push(Point value) {
